@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
+    /* Modify the backgorund color */ 
+
     .jumbotron{
         background-color: rgb(0, 132, 255);
     }
@@ -62,11 +66,55 @@ h2 {
 .display-6 {
     font-family: 'Source Sans Pro',sans-serif;
     font-size: 1re}
+ul li a{
+    color: white;
+}
+.navbar-brand{
+    color :white;
+}
 </style>
 <body>
+    <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-sm bg-success navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bootstrap theme</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active" ><a href="{% url 'index' %}">Home</a></li>
+          <li class="active" ><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'login' %}">SignIn</a></li>
+          <li><a href="{% url 'register' %}">SignUp</a></li>
+          <li><a href="{% url 'login' %}">AdminSignIn</a></li>
+          <li><a href="{% url 'register' %}">AdminSignUp</a></li>
+          <!--<li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu mr-auto">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>-->
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  
     <header class="jumbotron"> 
         <center><h1 style="color: white;">Flower Shop</h1></center>
     </header>
+    
     <br/>
     {% if user.is_authenticated %}
     <center></h1><h1><span style="color:orange;">Welcome</span> : {{user.username}}</h1></center>
@@ -139,8 +187,11 @@ h2 {
         </div>
         
         </section>
+        <form method = "post" enctype="multipart/form-data"> 
+            {% csrf_token %} 
+            {{ form.as_p }} 
+            <button type="submit">Upload</button> 
+        </form>
 
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </html>

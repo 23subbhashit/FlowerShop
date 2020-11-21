@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 def index(request):
     return render(request,'accounts/index.html')
+def shop(request):
+    return render(request,'accounts/shop.html')
 def register(request):
     if request.method=="POST":
         form = UserCreationForm(request.POST)
@@ -11,7 +13,7 @@ def register(request):
             form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            user = authenticate(username = username ,password = password )
+            user = authenticate(username = username ,password = password)
             login(request,user)
             return redirect('index')
     else:

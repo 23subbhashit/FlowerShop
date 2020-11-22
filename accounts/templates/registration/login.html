@@ -66,8 +66,7 @@
         {% csrf_token %}
 
         <p>Usernam :{{ form.username }}</p>
-    <p>password :{{ form.password }}</p>
-  
+    <p>password :{{ form.password }}</p>\
     <input type="submit" value="Login">
     <input type="hidden" name="next" value="{{ next }}"/>
     </form>

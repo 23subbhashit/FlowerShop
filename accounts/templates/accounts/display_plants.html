@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,40 +28,33 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                {% if user.is_authenticated %}
               <li class="active" ><a href="{% url 'index' %}">Home</a></li>
               <li class="active" ><a href="{% url 'shop' %}">Upload</a></li>
               <li class="active" ><a href="{% url 'images' %}">View</a></li>
               <li class="active" ><a href="{% url 'logout' %}">Logout</a></li>
-              <!--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu mr-auto">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>-->
+              {% else %}
+              <li class="active" ><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'login' %}">SignIn</a></li>
+              <li><a href="{% url 'register' %}">SignUp</a></li>
+              <li><a href="{% url 'login' %}">AdminSignIn</a></li>
+              <li><a href="{% url 'register' %}">AdminSignUp</a></li>
+              {% endif %}
             </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </nav>
-      
-        <header class="jumbotron"> 
-            <center><h1 style="color: white;">Flower Shop</h1></center>
-        </header>
-    <h1>Shop</h1>
-    <form method = "post" enctype="multipart/form-data" action="{% url 'shop' %}"> 
-      {% csrf_token %}
-      <label for="name">Name</label> <br/>
-      <input type="text" name="name" maxlength="50" required="" id="id_name"> <br/>
-      <label for="Main_Img">Image</label><br/>
-      <input type="file" name="Main_Img" accept="image/*" required="" id="id_Main_Img"><br/>
-      <button type="submit">Upload</button> 
-  </form> 
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <header class="jumbotron"> 
+        <center><h1 style="color: white;">Flower Shop</h1></center>
+    </header>
     
-
+    <div class="container">
+    {% for plant in plant_images %} 
+            <div class="col-md-3"> 
+                    {{ plant.name }} 
+                     <img src="{{ plant.Main_Img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> 
+            </div>
+    {% endfor %} 
+</div>
 </body>
 </html>

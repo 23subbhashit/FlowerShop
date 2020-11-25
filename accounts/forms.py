@@ -5,4 +5,4 @@ class Form(forms.ModelForm):
   
     class Meta: 
         model = Img
-        fields = ['name', 'Main_Img'] 
+        fields = ['name', 'Main_Img','price'] 

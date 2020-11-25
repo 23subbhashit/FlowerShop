@@ -11,7 +11,6 @@ def index(request):
     return render(request,'accounts/index.html')
 def logout(request):
     logout(request)
-    #messages.info(request, "Logged out successfully!")
     return redirect("/")
 def shop(request):
     if request.method == 'POST': 
@@ -42,8 +41,8 @@ def register(request):
 def display_images(request): 
   
     if request.method == 'GET':  
-        Hotels = Img.objects.all()  
-        return render(request, 'accounts/display_plants.html', {'plant_images' : Hotels})
+        Plants = Img.objects.all()  
+        return render(request, 'accounts/display_plants.html', {'plant_images' : Plants})
 
     
   

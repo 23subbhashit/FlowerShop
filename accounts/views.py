@@ -9,10 +9,10 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
     return render(request,'accounts/index.html')
-def logout_request(request):
+def logout(request):
     logout(request)
-    messages.info(request, "Logged out successfully!")
-    return redirect("index")
+    #messages.info(request, "Logged out successfully!")
+    return redirect("/")
 def shop(request):
     if request.method == 'POST': 
         form = Form(request.POST, request.FILES) 

@@ -7,10 +7,9 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('reirter',views.register,name='register'),
     path('shop',views.shop,name='shop'),
-    #path('image_upload', views.image_view, name = 'image_upload'),
     path('success', views.success, name = 'success'),
     path('images', views.display_images, name = 'images'),
-    path("logout", views.logout_request, name="logout")
+    path('logout', views.logout, name = 'logout')
 
 ]
 if settings.DEBUG: 

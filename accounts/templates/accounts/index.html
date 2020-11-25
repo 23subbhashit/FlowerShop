@@ -92,7 +92,7 @@ ul li a{
           <li class="active" ><a href="{% url 'index' %}">Home</a></li>
           <li class="active" ><a href="{% url 'shop' %}">Upload</a></li>
           <li class="active" ><a href="{% url 'images' %}">View</a></li>
-          <li class="active" ><a href="{% url 'logout' %}">Logout</a></li>
+          <li class="active" ><a href="{% url 'logout' %}?next={% url 'index' %}">Logout</a></li>
           {% else %}
           <li class="active" ><a href="{% url 'index' %}">Home</a></li>
           <li><a href="{% url 'login' %}">SignIn</a></li>
